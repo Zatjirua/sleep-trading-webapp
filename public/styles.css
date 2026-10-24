@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Trading WebApp</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1>Sleep Trader</h1>
+        <div class="status-card">
+          <span class="label">Bot status</span>
+          <strong id="bot-status">Loading...</strong>
+        </div>
+
+        <div class="controls">
+          <label>
+            Capital
+            <input id="capital" type="number" value="10000" step="100" />
+          </label>
+          <label>
+            Max daily loss
+            <input id="maxLoss" type="number" value="300" step="10" />
+          </label>
+          <label>
+            Max positions
+            <input id="maxPositions" type="number" value="3" min="1" max="10" />
+          </label>
+          <label>
+            Risk per trade %
+            <input id="riskPerTrade" type="number" value="2" min="0.5" max="10" step="0.5" />
+          </label>
+          <label>
+            Strategy
+            <select id="strategy">
+              <option value="trend-following">Trend following</option>
+              <option value="mean-reversion">Mean reversion</option>
+              <option value="breakout">Breakout</option>
+            </select>
+          </label>
+          <button id="save-settings">Save settings</button>
+          <button id="toggle-bot" class="secondary">Pause bot</button>
+          <button id="reset-session" class="danger">Reset session</button>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Portfolio overview</p>
+            <h2>Autopilot dashboard</h2>
+          </div>
+          <div class="pill" id="last-signal">WAITING</div>
+        </header>
+
+        <section class="metrics-grid">
+          <article class="metric-card">
+            <span>Equity</span>
+            <strong id="equity">$0.00</strong>
+          </article>
+          <article class="metric-card">
+            <span>Daily P&L</span>
+            <strong id="daily-pnl">$0.00</strong>
+          </article>
+          <article class="metric-card">
+            <span>Open positions</span>
+            <strong id="open-positions">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Win rate</span>
+            <strong id="win-rate">0%</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <h3>Positions</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Side</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                </tr>
+              </thead>
+              <tbody id="positions-body"></tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <h3>Recent activity</h3>
+            <ul id="activity-log" class="log-list"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "sleep-trading-webapp",
+  "version": "1.0.0",
+  "description": "Paper-trading web app that runs a bot while you sleep.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-cron": "^3.1.0"
+  }
+}
